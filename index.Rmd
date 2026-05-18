@@ -1,0 +1,90 @@
+---
+title: "HW4"
+author: "Lafaith Allen-Delice"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard) # always
+```
+
+# Intro {.sidebar}
+
+This dashboard contains five visualizations using data sets related to arrests, COVID-19 statistics, and city safety indicators.
+
+### Visualizations description
+
+This dashboard contains five visualizations using datasets related to arrests, COVID-19 statistics, and city safety indicators.
+
+-The first graph is a bar chart displaying arrests by sex and race using the Mass_Arrests.xlsx dataset.
+
+-The second graph is a scatterplot showing average daily COVID-19 cases and average daily deaths using the covid-19.csv dataset.
+
+-The third graph is a boxplot displaying the distribution of age across racial groups using the Mass_Arrests.xlsx dataset.
+
+-The fourth graph is a copy of the provided heatmap using the safeCities_ecoUI.xlsx dataset.
+
+-The fifth graph is an improved version of that heatmap.
+
+Links to the datasets are available in the References tab.
+
+# References: {.tabset .tabset-fade}
+
+### Links
+
+The following data sets were used:
+
+<https://github.com/lallen-student/HW4/blob/main/Mass_Arrests.xlsx> <https://github.com/lallen-student/HW4/blob/main/covid-19.csv> <https://github.com/lallen-student/HW4/blob/main/safeCities_ecoUI.xlsx>
+
+# Arrests by Sex and Race {.tabset .tabset-fade}
+
+### Arrests by Sex and Race
+
+```{r}
+## for del1Draft.rds
+link1a="https://github.com/lallen-student/HW4/raw/main/del1Draft.rds"
+readRDS(url(link1a))
+```
+
+# Daily Cases vs. Daily Deaths {.tabset .tabset-fade}
+
+### Average daily COVID-19 cases and average daily deaths
+
+```{r}
+## for del2Draft.rds
+link2a="https://github.com/lallen-student/HW4/raw/main/del2Draft.rds"
+readRDS(url(link2a))
+```
+
+# Arrests by Race and Age {.tabset .tabset-fade}
+
+### Distribution of age across racial groups
+
+```{r}
+## for del3Draft.rds
+link3a="https://github.com/lallen-student/HW4/raw/main/del3Draft.rds"
+readRDS(url(link3a))
+```
+
+# Old HeatMap {.tabset .tabset-fade}
+
+### Provided Heatmap
+
+```{r}
+## for del4Draft.rds
+link4a= "https://github.com/lallen-student/HW4/raw/main/del4Draft.rds"
+readRDS(url(link4a))
+```
+
+# Improved Heat Map {.tabset .tabset-fade}
+
+### Average Safety Scores by City and Dimension {data-width="450"}
+
+```{r, fig.width=10, fig.height=12}
+
+## for del5Draft.rds
+link5a= "https://github.com/lallen-student/HW4/raw/main/del5Draft.rds"
+readRDS(url(link5a))
+```
