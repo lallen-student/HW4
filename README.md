@@ -1,6 +1,6 @@
 # HW4
 
-This repository contains my HW4 dashboard using the NCES Massachusetts school excel datasheet.
+This repository contains my HW4 dashboard using the Mass_Arrests.xslx, teh covid 19.csv, and the safeCities.xlsx
 
 Files
 
@@ -8,4 +8,4 @@ Files
 
 Published Dashboard
 
-https://lallen-student.github.io/HW3/
+https://lallen-student.github.io/HW4/
