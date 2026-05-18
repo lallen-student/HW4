@@ -1,119 +1,363 @@
-
 # clean memory ------------------------------------------------------------
+
 rm(list = ls())
+
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(rio)
+library(patchwork)
+
+#set working directory
+
+# read in data 1 ------------------------------------------------------------
+
+location="https://github.com/lallen-student/HW4/raw/main/"
+
+file1= "Mass_Arrests.xlsx"
+
+link=paste0(location,file1)
+
+download.file(link,
+              destfile = file1,
+              mode = "wb")
+
+mydata1 <- readxl::read_xlsx(file1)
+
+# see data ----------------------------------------------------------
+
+head(mydata1)
+
+glimpse(mydata1)
+
+summary(mydata1)
+
+# see data types ----------------------------------------------------------
+
+str(mydata1)
+
+# deliverable 1 categorical variable/column ----------------------------------------------------------
+
+catcat_data <- mydata1 |>
+  count(Sex, Race)
+
+catcat_plot <- ggplot(catcat_data,
+                      aes(x = Race,
+                          y = n,
+                          fill = Sex)) +
+  
+  geom_col(position = "dodge") +
+  
+  labs(
+    title = "Arrests by Race and Sex",
+    x = "Race",
+    y = "Number of Arrests",
+    fill = "Sex",
+    caption = "Source: Mass_Arrests.xlsx"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+catcat_plot
+
+# save del1Draft ----------------------------------------------------------
+
+saveRDS(catcat_plot, file = "del1Draft.rds")
+
+# read in data 2 ------------------------------------------------------------
+
+filename= "https://github.com/lallen-student/HW4/raw/main/covid-19.csv"
+
+mydata2=read.csv(filename)
+
+# see data ----------------------------------------------------------
+
+head(mydata2)
+
+glimpse(mydata2)
+
+summary(mydata2)
+
+# see data types ----------------------------------------------------------
+
+str(mydata2)
+names(mydata2)
+
+# deliverable 2 numerical variable/column --------------------------------
+
+num_num <- ggplot(mydata2,
+                  aes(x = daily_cases_mean,
+                      y = daily_deaths_mean)) +
+  
+  geom_point(alpha = 0.4,
+             color = "darkred") +
+  
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "blue") +
+  
+  labs(
+    title = "COVID-19 Daily Cases and Daily Deaths",
+    x = "Daily Cases Mean",
+    y = "Daily Deaths Mean",
+    caption = "Source: covid-19.csv"
+  ) +
+  
+  theme_minimal()
+
+num_num
+
+# save del2Draft ----------------------------------------------------------
+
+saveRDS(num_num, file = "del2Draft.rds")
+
+# deliverable 3 numerical variable/column --------------------------------
+
+numcat_plot <- ggplot(mydata1,
+                      aes(x = Race,
+                          y = Age,
+                          fill = Race)) +
+  
+  geom_boxplot() +
+  
+  labs(
+    title = "Age Distribution by Race",
+    x = "Race",
+    y = "Age",
+    caption = "Source: Mass_Arrests.xlsx"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none"
+  )
+
+numcat_plot
+
+# save del3Draft ----------------------------------------------------------
+
+saveRDS(numcat_plot, file = "del3Draft.rds")
+
+# read in data for del4 ------------------------------------------------------------
+
+location="https://github.com/lallen-student/HW4/raw/main/"
+
+file4= "safeCities_ecoUI.xslx"
+# clean memory ------------------------------------------------------------
+
+rm(list = ls())
+
 library(dplyr)
 library(ggplot2)
 library(tidyr)
 
-# read in data ------------------------------------------------------------
 #set working directory
 
-location="https://github.com/lallen-student/HW3/raw/main/"
+# read in data 1 ------------------------------------------------------------
 
-file= "ncesdata_MASS_202425.xlsx"
+location="https://github.com/lallen-student/HW4/raw/main/"
 
-link=paste0(location,file)
+file1= "Mass_Arrests.xlsx"
+
+link=paste0(location,file1)
 
 download.file(link,
-              destfile = file,
+              destfile = file1,
               mode = "wb")
 
-mydata <- readxl::read_xlsx(file, skip = 11)
+mydata1 <- readxl::read_xlsx(file1)
 
 # see data ----------------------------------------------------------
 
+head(mydata1)
 
-head(mydata)
+glimpse(mydata1)
 
-glimpse(mydata)
-
-summary(mydata)
-
+summary(mydata1)
 
 # see data types ----------------------------------------------------------
 
-str(mydata)
+str(mydata1)
 
 # deliverable 1 categorical variable/column ----------------------------------------------------------
 
+catcat_data <- mydata1 |>
+  count(Sex, Race)
 
-cat_data <- mydata |> 
-  mutate(
-    locale_group = case_when(
-      grepl("City", Locale) ~ "City",
-      grepl("Suburban", Locale) ~ "Suburban",
-      grepl("Town", Locale) ~ "Town",
-      grepl("Rural", Locale) ~ "Rural")) |> 
-  mutate(
-    size_group = case_when(
-      grepl("Large", Locale) ~ "Large",
-      grepl("Midsize", Locale) ~ "Midsize",
-      grepl("Small", Locale) ~ "Small",
-      TRUE ~ "Other"
-    )
-  ) |>
-  count(locale_group, size_group)
-
-totals <- cat_data |>
-  group_by(locale_group) |>
-  summarize(total = sum(n))
-
-cat_data2 <- ggplot(cat_data,
-       aes(x = reorder(locale_group, n),
-           y = n,
-           fill = size_group)) +
+catcat_plot <- ggplot(catcat_data,
+                      aes(x = Race,
+                          y = n,
+                          fill = Sex)) +
   
-  geom_col() +
-  
-  geom_text(data = totals,
-            aes(x = locale_group,
-                y = total,
-                label = total),
-            vjust = -0.5,
-            inherit.aes = FALSE) + 
+  geom_col(position = "dodge") +
   
   labs(
-    title = "Amount of Massachusetts Schools by Locale Group",
-    x = "Locale Type",
-    y = "Number of Schools",
-    fill = "Locale Size",
-    caption = "Source: NCES Massachusetts School Data"
+    title = "Arrests by Race and Sex",
+    x = "Race",
+    y = "Number of Arrests",
+    fill = "Sex",
+    caption = "Source: Mass_Arrests.xlsx"
   ) +
   
-  theme_minimal()
+  theme_minimal() +
+  
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
 
-cat_data2
+catcat_plot
 
 # save del1Draft ----------------------------------------------------------
 
-saveRDS(cat_data2, file = "del1Draft.rds")
+saveRDS(catcat_plot, file = "del1Draft.rds")
+
+# read in data 2 ------------------------------------------------------------
+
+filename= "https://github.com/lallen-student/HW4/raw/main/covid-19.csv"
+
+mydata2=read.csv(filename)
+
+# see data ----------------------------------------------------------
+
+head(mydata2)
+
+glimpse(mydata2)
+
+summary(mydata2)
+
+# see data types ----------------------------------------------------------
+
+str(mydata2)
+names(mydata2)
 
 # deliverable 2 numerical variable/column --------------------------------
 
-num_data <- mydata |>
-  filter(Students != "†",
-         Students != "–")
-
-num_data2 <- ggplot(num_data,
-       aes(x = as.numeric(Students))) +
+num_num <- ggplot(mydata2,
+                  aes(x = daily_cases_mean,
+                      y = daily_deaths_mean)) +
   
-  geom_histogram(
-    bins = 30,
-    fill = "lightblue",
-    color = "black"
-  ) +
+  geom_point(alpha = 0.4,
+             color = "darkred") +
+  
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "blue") +
   
   labs(
-    title = "Distribution of Student Enrollment in Massachusetts",
-    x = "Amount of Students",
-    y = "Amount of Schools",
-    caption = "Source: NCES Massachusetts School Data"
+    title = "COVID-19 Daily Cases and Daily Deaths",
+    x = "Daily Cases Mean",
+    y = "Daily Deaths Mean",
+    caption = "Source: covid-19.csv"
   ) +
   
   theme_minimal()
 
-num_data2
+num_num
 
 # save del2Draft ----------------------------------------------------------
 
-saveRDS(num_data2, file = "del2Draft.rds")
+saveRDS(num_num, file = "del2Draft.rds")
+
+# deliverable 3 numerical variable/column --------------------------------
+
+numcat_plot <- ggplot(mydata1,
+                      aes(x = Race,
+                          y = Age,
+                          fill = Race)) +
+  geom_boxplot() +
+  
+  labs(
+    title = "Age Distribution by Race",
+    x = "Race",
+    y = "Age",
+    caption = "Source: Mass_Arrests.xlsx" ) +
+  
+  theme_minimal() +
+  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none")
+
+numcat_plot
+
+# save del3Draft ----------------------------------------------------------
+
+saveRDS(numcat_plot, file = "del3Draft.rds")
+
+# read in data for del4 ------------------------------------------------------------
+
+location="https://github.com/lallen-student/HW4/raw/main/"
+
+file4= "safeCities_ecoUI.xlsx"
+
+link2=paste0(location,file4)
+
+download.file(link2,
+              destfile = file4,
+              mode = "wb")
+
+mydata4 <- readxl::read_xlsx(file4)
+
+# see data  ----------------------------------------------------------
+
+head(mydata4)
+
+glimpse(mydata4)
+
+summary(mydata4)
+
+# see data types ----------------------------------------------------------
+
+str(mydata4)
+
+names(mydata4)
+
+# deliverable 4 numerical variable/column --------------------------------
+
+original_plot <- ggplot(mydata4,
+                        aes(x = Overall_Score,
+                            y = H_Out_LifeExpectancyYears)) +
+  geom_point() +
+  
+  labs(
+    title = "Original Plot"
+  )
+
+
+
+improved_plot <- ggplot(mydata4,
+                        aes(x = Overall_Score,
+                            y = H_Out_LifeExpectancyYears,
+                            color = city)) +
+  geom_point(size = 3,
+             alpha = 0.7) +
+  labs(
+    title = "Improved Plot of Overall Safety and Life Expectancy",
+    x = "Overall Safety Score",
+    y = "Life Expectancy",
+    color = "City",
+    caption = "Source: safeCities_ecoUI.xlsx"
+  ) +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold",
+                                  size = 14))
+  
+original_plot
+
+improved_plot
+
+# side by side ------------------------------------------------------------
+
+del4Draft <- original_plot + improved_plot
+
+del4Draft
+
+# save del4Draft ----------------------------------------------------------
+
+saveRDS(del4Draft, file = "del4Draft.rds")
