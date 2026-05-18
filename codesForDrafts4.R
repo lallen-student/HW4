@@ -229,7 +229,7 @@ original_plot
 
 improved_plot <-  original_plot + 
   labs(
-    title = "Average Output Safety Scores by City and Dimension",
+    title = "Safety Scores by City and Dimension",
     fill = "Average Score",
     caption = "Source: safeCities_ecoUI.xlsx") +
   theme_minimal() +
