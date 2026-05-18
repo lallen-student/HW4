@@ -229,7 +229,7 @@ original_plot
 
 improved_plot <-  original_plot + 
   labs(
-    title = "Safety Scores by City and Dimension",
+    title = " Safety Scores by City and Dimension",
     fill = "Average Score",
     caption = "Source: safeCities_ecoUI.xlsx") +
   theme_minimal() +
@@ -238,7 +238,7 @@ improved_plot <-  original_plot +
     axis.text.x = element_text(angle = 90,
                                hjust = 1,
                                size = 12),
-    axis.text.y = element_text(size = 10) )
+    axis.text.y = element_text(size = 11) )
 
 improved_plot
 
