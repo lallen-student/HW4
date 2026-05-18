@@ -12,21 +12,23 @@ library(flexdashboard) # always
 
 # Intro {.sidebar}
 
+### Brief Description
+
 This dashboard contains five visualizations using data sets related to arrests, COVID-19 statistics, and city safety indicators.
 
-### Visualizations description
+### Visualization Descriptions
 
 This dashboard contains five visualizations using datasets related to arrests, COVID-19 statistics, and city safety indicators.
 
--The first graph is a bar chart displaying arrests by sex and race using the Mass_Arrests.xlsx dataset.
+- The first graph is a bar chart displaying arrests by sex and race using the Mass_Arrests.xlsx dataset.
 
--The second graph is a scatterplot showing average daily COVID-19 cases and average daily deaths using the covid-19.csv dataset.
+- The second graph is a scatterplot showing average daily COVID-19 cases and average daily deaths using the covid-19.csv dataset.
 
--The third graph is a boxplot displaying the distribution of age across racial groups using the Mass_Arrests.xlsx dataset.
+- The third graph is a boxplot displaying the distribution of age across racial groups using the Mass_Arrests.xlsx dataset.
 
--The fourth graph is a copy of the provided heatmap using the safeCities_ecoUI.xlsx dataset.
+- The fourth graph is a copy of the provided heatmap using the safeCities_ecoUI.xlsx dataset.
 
--The fifth graph is an improved version of that heatmap.
+- The fifth graph is an improved version of that heatmap.
 
 Links to the datasets are available in the References tab.
 
@@ -36,7 +38,9 @@ Links to the datasets are available in the References tab.
 
 The following data sets were used:
 
-<https://github.com/lallen-student/HW4/blob/main/Mass_Arrests.xlsx> <https://github.com/lallen-student/HW4/blob/main/covid-19.csv> <https://github.com/lallen-student/HW4/blob/main/safeCities_ecoUI.xlsx>
+- <https://github.com/lallen-student/HW4/blob/main/Mass_Arrests.xlsx> 
+- <https://github.com/lallen-student/HW4/blob/main/covid-19.csv> 
+- <https://github.com/lallen-student/HW4/blob/main/safeCities_ecoUI.xlsx>
 
 # Arrests by Sex and Race {.tabset .tabset-fade}
 
