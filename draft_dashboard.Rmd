@@ -85,9 +85,9 @@ readRDS(url(link4a))
 Improved Heat Map {.tabset .tabset-fade}
 =====================================
 
-### Average Safety Scores by City and Dimension
+### Average Safety Scores by City and Dimension {data-width="450"}
 
-```{r, fig.width=10, fig.height=12, data-width="450"}
+```{r, fig.width=10, fig.height=12}
 
 ## for del5Draft.rds
 link5a= "https://github.com/lallen-student/HW4/raw/main/del5Draft.rds"
