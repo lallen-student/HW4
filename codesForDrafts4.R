@@ -237,8 +237,8 @@ improved_plot <-  original_plot +
     plot.title = element_text(face = "bold", size = 14),
     axis.text.x = element_text(angle = 90,
                                hjust = 1,
-                               size = 9),
-    axis.text.y = element_text(size = 9) )
+                               size = 12),
+    axis.text.y = element_text(size = 10) )
 
 improved_plot
 
